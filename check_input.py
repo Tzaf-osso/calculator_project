@@ -1,3 +1,5 @@
+from calculator_exception import *
+
 test_str = ""
 VALID_CHARACTERS = ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')']
 
@@ -175,14 +177,33 @@ class Calculate:
     def __init__(self):
         pass
 
-    def calculate_level7(self, math_string):
+    def calculate_level7(self, math_list):
         """
         This method calculate the expression from operation of level 7
         The operation is => ~
-        :param math_string:
+        :param math_list: list of the expression
         :return:
         """
-        pass
+        counter = 0
+        for sign in math_list:
+            if sign == "~":
+                if math_list[counter + 1].isdigit():
+                    math_str = "~" + math_list[counter + 1]
+                    answer = eval(math_str)
+                    math_list[counter + 1] = str(answer)
+                    math_list.remove("~")
+                elif math_list[counter + 1] == "+":
+                    math_str = "~" + math_list[counter + 2]
+                    answer = eval(math_str)
+                    math_list[counter + 2] = str(answer)
+                    math_list.remove("~")
+                    math_list.remove("+")
+                else:
+                    math_str = "~" + "-" + math_list[counter + 2]
+                    answer = eval(math_str)
+                    math_list[counter + 2] = str(answer)
+                    math_list.remove("~")
+                    math_list.remove("-")
 
     def calculate_level6(self, math_string):
         """
