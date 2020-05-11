@@ -32,6 +32,24 @@ class CheckString:
                 break
         return status
 
+    def check_follows_numbers(self,str_exp):
+        """
+        check if there is 2 numbers that follow without math expression
+        for example:
+        6+7*9 2+44/54 --------> wrong
+        6+7*9+2+44/54 --------> good
+        """
+        tmp_str = " ".join((str_exp.split()))
+
+        status = "good"
+        for i in range(len(tmp_str)):
+            if tmp_str[i] == ' ':
+                if tmp_str[i - 1].isdigit() and tmp_str[i + 1].isdigit():
+                    status = "wrong"
+
+        print(status)
+
+
     @staticmethod
     def check_input_string():
         status = ""
