@@ -1,4 +1,5 @@
 test_str = ""
+VALID_CHARACTERS = ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')']
 
 
 class CheckString:
@@ -20,19 +21,21 @@ class CheckString:
     def is_char_is_valid(math_string):
         """
         check if all the characters are normal
+        normal chars = { digit,+,-,/,*,^,~,!,%,(,) }
         :param math_string:
         :return:
         """
         status = True
         for i in math_string:
-            if i in ['+', '-', '*', '%', '/', '!', '~', '(', ')'] or i.isdigit():
+            if i in ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')'] or i.isdigit():
                 pass
             else:
                 status = False
                 break
         return status
 
-    def check_follows_numbers(self,str_exp):
+    @staticmethod
+    def check_follows_numbers(str_exp):
         """
         check if there is 2 numbers that follow without math expression
         for example:
@@ -49,10 +52,9 @@ class CheckString:
 
         print(status)
 
-
     @staticmethod
     def check_input_string():
-        status = ""
+        pass
 
     @staticmethod
     def check_balanced_barcks(self):
@@ -63,7 +65,7 @@ class CheckString:
     @staticmethod
     def make_string_only_bracket(math_string):
         for i in math_string:
-            if i in ['+', '-', '*', '%', '/', '!', '~'] or i.isdigit():
+            if i in ['+', '-', '*', '%', '/', '^', '!', '~'] or i.isdigit():
                 math_string = math_string.replace(i, "")
             else:
                 pass
@@ -92,7 +94,7 @@ class CheckString:
 
     def check_bracket(self, math_string):
         self.check_balanced_barcks(math_string)
-#        self.check_barcks_places(math_string)
+        #        self.check_barcks_places(math_string)
         self.check_bracket_valid_places(math_string)
 
     def tests(self, input_string):
