@@ -2,6 +2,10 @@ test_str = ""
 VALID_CHARACTERS = ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')']
 
 
+def main():
+    pass
+
+
 class CheckString:
     def __init__(self):
         pass
@@ -102,10 +106,10 @@ class CheckString:
         #        self.check_barcks_places(math_string)
         self.check_bracket_valid_places(math_string)
 
-    def tests(self, input_string):
+    def check_string(self, input_string):
         status = True
 
-        # check if all the chars are valid
+        "check if all the chars are valid"
         status = self.is_char_is_valid(input_string)
         # check follow numbers
         status = self.check_follows_numbers(input_string)
@@ -114,4 +118,107 @@ class CheckString:
 
 
 class ParseExpression:
+    """
+       A class used to parse the expression
+
+       ...
+
+       Attributes
+       ----------
+       says_str : str
+           a formatted string to print out what the animal says
+       name : str
+           the name of the animal
+       sound : str
+           the sound that the animal makes
+       num_legs : int
+           the number of legs the animal has (default 4)
+
+       Methods
+       -------
+       delete_symbol(sound=None)
+           for example there is 5+8+-9  |   3/+6
+           so the method do => 5+8-9    |   3/6
+
+        create list from the expression
+       """
+
     pass
+
+
+class Calculate:
+    """
+       A class used to parse the expression
+
+       ...
+
+       Attributes
+       ----------
+       says_str : str
+           a formatted string to print out what the animal says
+       name : str
+           the name of the animal
+       sound : str
+           the sound that the animal makes
+       num_legs : int
+           the number of legs the animal has (default 4)
+
+       Methods
+       -------
+       delete_symbol(sound=None)
+           for example there is 5+8+-9  |   3/+6
+           so the method do => 5+8-9    |   3/6
+
+        create list from the expression
+       """
+
+    def __init__(self):
+        pass
+
+    def calculate_level7(self, math_string):
+        """
+        This method calculate the expression from operation of level 7
+        The operation is => ~
+        :param math_string:
+        :return:
+        """
+        pass
+
+    def calculate_level6(self, math_string):
+        """
+        This method calculate the expression from operation of level 6
+        The operation is => !
+        :param math_string:
+        :return:
+        """
+        pass
+
+    def calculate_level3(self, math_string):
+        """
+        This method calculate the expression from operation of level 3
+        The operation is => ^
+        :param math_string:
+        :return:
+        """
+        pass
+
+    def calculate_level2(self, math_string):
+        """
+        This method calculate the expression from operation of level 2
+        The operation is => * , / , %
+        :param math_string:
+        :return:
+        """
+        pass
+
+    def calculate_level1(self, math_string):
+        """
+        This method calculate the expression from operation of level 1
+        The operation is => + , -
+        :param math_string:
+        :return:
+        """
+        pass
+
+    if __name__ == "__main__":
+        main()
