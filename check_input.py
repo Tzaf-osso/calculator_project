@@ -27,7 +27,7 @@ class CheckString:
         """
         status = True
         for i in math_string:
-            if i in ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')'] or i.isdigit():
+            if i in ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')', ' '] or i.isdigit():
                 pass
             else:
                 status = False
@@ -50,7 +50,7 @@ class CheckString:
                 if tmp_str[i - 1].isdigit() and tmp_str[i + 1].isdigit():
                     status = "wrong"
 
-        print(status)
+        return status
 
     @staticmethod
     def check_input_string():
@@ -75,6 +75,11 @@ class CheckString:
 
     @staticmethod
     def check_bracket_valid_places(list_math_string):
+        """
+        The function check if if all the bracket are open and close
+        :param list_math_string:
+        :return:
+        """
         status = "good"
         bracket_counter = 0
         for i in list_math_string:
@@ -98,5 +103,15 @@ class CheckString:
         self.check_bracket_valid_places(math_string)
 
     def tests(self, input_string):
+        status = True
+
+        # check if all the chars are valid
+        status = self.is_char_is_valid(input_string)
+        # check follow numbers
+        status = self.check_follows_numbers(input_string)
+        # clean the math string from spaces
         clean_string = self.delete_spaces(input_string)
-        self.is_char_is_valid(clean_string)
+
+
+class ParseExpression:
+    pass
