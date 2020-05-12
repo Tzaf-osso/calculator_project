@@ -114,6 +114,48 @@ class CheckString:
         status = self.check_follows_numbers(input_string)
         # clean the math string from spaces
         clean_string = self.delete_spaces(input_string)
+        return clean_string
+
+
+class ConvertString:
+    """
+          A class used to convert the string to list
+
+          ...
+
+          Methods
+          -------
+          convert_to_list() - function convert the math string to list
+
+          create_list_from_string() - convert the string to list
+
+          clean_unwanted_char() - clean the list from unwanted signs
+            """
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def create_list_from_string(string_exp):
+        """
+        This method create a list from the string math expression
+        for example :
+                    "4+5/21+3*542" =>>>>  ['4','5','/','21,'+','3','*','542'
+        :param string_exp:
+        :return:
+        """
+        return re.split('(\D)', string_exp)
+
+    @staticmethod
+    def clean_unwanted_char(string_exp):
+        # remove all '' if there are this sign ~ !
+        for i in string_exp:
+            if i == '':
+                string_exp.remove('')
+        return string_exp
+
+    def convert_to_list(self, string_exp):
+        math_list = self.create_list_from_string(string_exp)
+        return self.clean_unwanted_char(math_list)
 
 
 class ParseExpression:
@@ -141,27 +183,6 @@ class ParseExpression:
 
         create list from the expression
        """
-
-    def create_list_from_string(self, string_exp):
-        """
-        This method create a list from the string math expression
-        for example :
-                    "4+5/21+3*542" =>>>>  ['4','5','/','21,'+','3','*','542'
-        :param string_exp:
-        :return:
-        """
-        return re.split('(\D)', string_exp)
-
-    def clean_unwanted_char(self, string_exp):
-        # remove all '' if there are this sign ~ !
-        for i in string_exp:
-            if i == '':
-                string_exp.remove('')
-        return string_exp
-
-    def convert_to_list(self, string_exp):
-        math_list = self.create_list_from_string(string_exp)
-        return self.clean_unwanted_char(math_list)
 
     pass
 
@@ -267,9 +288,11 @@ def get_expression_from_user():
 
 def main():
     check_exp = CheckString()
+    c = ConvertString()
     p = ParseExpression()
     math_str = get_expression_from_user()
-    check_exp.check_string(math_str)
+    clean_str = check_exp.check_string(math_str)
+    list_math_exp = c.convert_to_list(clean_str)
     pass
 
 
