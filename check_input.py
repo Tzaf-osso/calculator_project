@@ -1,4 +1,5 @@
 from calculator_exception import *
+import re
 
 test_str = ""
 VALID_CHARACTERS = ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')']
@@ -141,6 +142,27 @@ class ParseExpression:
         create list from the expression
        """
 
+    def create_list_from_string(self, string_exp):
+        """
+        This method create a list from the string math expression
+        for example :
+                    "4+5/21+3*542" =>>>>  ['4','5','/','21,'+','3','*','542'
+        :param string_exp:
+        :return:
+        """
+        return re.split('(\D)', string_exp)
+
+    def clean_unwanted_char(self, string_exp):
+        # remove all '' if there are this sign ~ !
+        for i in string_exp:
+            if i == '':
+                string_exp.remove('')
+        return string_exp
+
+    def convert_to_list(self, string_exp):
+        math_list = self.create_list_from_string(string_exp)
+        return self.clean_unwanted_char(math_list)
+
     pass
 
 
@@ -245,6 +267,7 @@ def get_expression_from_user():
 
 def main():
     check_exp = CheckString()
+    p = ParseExpression()
     math_str = get_expression_from_user()
     check_exp.check_string(math_str)
     pass
