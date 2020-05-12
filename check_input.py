@@ -4,10 +4,6 @@ test_str = ""
 VALID_CHARACTERS = ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')']
 
 
-def main():
-    pass
-
-
 class CheckString:
     def __init__(self):
         pass
@@ -241,5 +237,17 @@ class Calculate:
         """
         pass
 
-    if __name__ == "__main__":
-        main()
+
+def get_expression_from_user():
+    print("Hello")
+    return input("Please write your expression\n")
+
+
+def main():
+    check_exp = CheckString()
+    math_str = get_expression_from_user()
+    pass
+
+
+if __name__ == "__main__":
+    main()
