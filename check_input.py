@@ -29,7 +29,7 @@ class CheckString:
         """
         status = True
         for i in math_string:
-            if i in ['+', '-', '*', '%', '/', '!', '~', '^', '(', ')', ' '] or i.isdigit():
+            if i in ['+', '-', '*', '.', '%', '/', '!', '~', '^', '(', ')', ' '] or i.isdigit():
                 pass
             else:
                 status = False
@@ -246,6 +246,7 @@ def get_expression_from_user():
 def main():
     check_exp = CheckString()
     math_str = get_expression_from_user()
+    check_exp.check_string(math_str)
     pass
 
 
