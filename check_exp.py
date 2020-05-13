@@ -3,23 +3,12 @@ class CheckString:
         pass
 
     @staticmethod
-    def delete_spaces(input_string):
-        """
-        This function delete the spaces
-        example: 4 +4/8 *     (22+9)  =====>   4+4/8*(22+9)
-        :param input_string:
-        :return:
-        """
-        clean_string = input_string.replace(" ", "")  # delete spaces
-        return clean_string
-
-    @staticmethod
     def is_char_is_valid(math_string):
         """
         check if all the characters are normal
         normal chars = { digit,+,-,/,*,^,~,!,%,(,) }
         :param math_string:
-        :return:
+        :return: status
         """
         status = True
         for i in math_string:
@@ -49,13 +38,40 @@ class CheckString:
         return status
 
     @staticmethod
-    def check_input_string():
-        pass
+    def delete_spaces(input_string):
+        """
+        This function delete the spaces
+        example: 4 +4/8 *     (22+9)  =====>   4+4/8*(22+9)
+        :param input_string:
+        :return:
+        """
+        clean_string = input_string.replace(" ", "")  # delete spaces
+        return clean_string
 
     @staticmethod
-    def check_balanced_barcks(self):
-        # open_Bracket = []
-        # close_Bracket = []
+    def check_balanced_brackets(math_expr):
+        """
+        This method check if thr brackets are balanced
+        for example if there is open bracket without close bracket
+        the brackets called unbalanced
+        :param math_expr:
+        :return:
+        """
+        status = ""
+        open_bark = []
+        close_bark = []
+        index = 0
+        for char in math_expr:
+            if char == '(':
+                open_bark.append(index)
+            elif char == ')':
+                close_bark.append(index)
+            index += 1
+        if len(open_bark) == len(close_bark):
+            status = "Balanced"
+        else:
+            status = "unbalanced"
+        return status, open_bark, close_bark
         pass
 
     @staticmethod
