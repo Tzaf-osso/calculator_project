@@ -82,5 +82,5 @@ class CheckBrackets:
         status = self.is_brackets_in_expression(math_string)
 
         status = self.check_balanced_brackets(math_string)
-        # self.check_barcks_places(math_string)
+
         self.check_bracket_valid_places(math_string)
