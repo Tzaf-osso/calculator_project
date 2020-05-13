@@ -166,25 +166,50 @@ class ParseExpression:
 
        Attributes
        ----------
-       says_str : str
-           a formatted string to print out what the animal says
-       name : str
-           the name of the animal
-       sound : str
-           the sound that the animal makes
-       num_legs : int
-           the number of legs the animal has (default 4)
 
-       Methods
-       -------
-       delete_symbol(sound=None)
-           for example there is 5+8+-9  |   3/+6
-           so the method do => 5+8-9    |   3/6
-
-        create list from the expression
        """
 
-    pass
+    def remove_character_minus_sequence(self,math_list):
+        """
+        This method replace sequence of ' - '.
+        for example:
+                    5+8---9*2/3------8+322^2 => 5+8-9*2/3+8+322^2
+        :param math_list:
+        :return:
+        """
+        math_list = list(math_list)
+        counterplus = 0
+        counterminus = 0
+        count_plus_flag = False
+        counter = 0
+        counter_i = 0
+
+        for i in math_list:
+            if i == '-':
+                count_plus_flag = True
+                counter = counter_i
+                counterminus += 1
+                while count_plus_flag:
+                    if math_list[counter + 1] == '-':
+                        counterplus += 1
+                        math_list.pop(counter + 1)
+                        counterminus += 1
+                    else:
+                        if counterminus % 2 == 0:
+                            math_list[counter_i] = '+'
+                        count_plus_flag = False
+                        counterminus = 0
+                counterplus = 0
+
+            counter_i += 1
+
+        return math_list
+
+    def remove_character_plus_sequence(self,math_list):
+        pass
+
+    def remove_character_minus_plus_sequence(self,math_list):
+        pass
 
 
 class Calculate:
